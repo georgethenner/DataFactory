@@ -1,0 +1,12 @@
+{
+	"name": "SourceDataset_9he",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DESE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": []
+	}
+}
