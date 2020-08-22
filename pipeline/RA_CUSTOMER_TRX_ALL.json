@@ -46,7 +46,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_7hi",
+						"referenceName": "Parquet1",
 						"type": "DatasetReference"
 					}
 				]

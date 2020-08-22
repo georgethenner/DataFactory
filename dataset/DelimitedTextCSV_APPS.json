@@ -1,0 +1,24 @@
+{
+	"name": "DelimitedTextCSV_APPS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "APPS.RA_CUSTOMER_TRX_ALL",
+				"folderPath": "ERP/APPS",
+				"fileSystem": "staging"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
