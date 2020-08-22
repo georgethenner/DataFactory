@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzDataLakeStorage'"
 		},
+		"DESE_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'DESE'"
+		},
 		"AzDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://pocbacenstorage.dfs.core.windows.net"
@@ -68,7 +72,36 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ParquetERP')]",
+			"name": "[concat(parameters('factoryName'), '/DelimitedTextCSV_APPS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzDataLakeStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "APPS.RA_CUSTOMER_TRX_ALL",
+						"folderPath": "ERP/APPS",
+						"fileSystem": "staging"
+					},
+					"columnDelimiter": "|",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzDataLakeStorage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Parquet1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -81,7 +114,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": "ERP",
+						"folderPath": "ERP/APPS",
 						"fileSystem": "staging"
 					},
 					"compressionCodec": "snappy"
@@ -90,6 +123,108 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzDataLakeStorage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DESE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Oracle",
+				"typeProperties": {
+					"connectionString": "[parameters('DESE_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntimeIBM",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeIBM')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_7hi')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "DESE",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "OracleTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/DESE')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/RA_CUSTOMER_TRX_ALL')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_7hi",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "."
+							},
+							{
+								"name": "Destination",
+								"value": "staging/ERP/APPS/APPS.RA_CUSTOMER_TRX_ALL"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "OracleSource",
+								"oracleReaderQuery": "select * from APPS.RA_CUSTOMER_TRX_ALL \nwhere last_update_date>= to_date('2020-08-19 16:28:18', 'YYYY-MM-DD HH24:MI:SS')\nand last_update_date<= to_date('2020-08-21 16:28:18', 'YYYY-MM-DD HH24:MI:SS') ;",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"validateDataConsistency": false
+						},
+						"inputs": [
+							{
+								"referenceName": "SourceDataset_7hi",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Parquet1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_7hi')]",
+				"[concat(variables('factoryId'), '/datasets/Parquet1')]"
 			]
 		}
 	]

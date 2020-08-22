@@ -8,6 +8,9 @@
 		"AzDataLakeStorage_accountKey": {
 			"value": ""
 		},
+		"DESE_connectionString": {
+			"value": ""
+		},
 		"AzDataLakeStorage_properties_typeProperties_url": {
 			"value": "https://pocbacenstorage.dfs.core.windows.net"
 		}

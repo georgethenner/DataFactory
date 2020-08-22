@@ -6,44 +6,12 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "estudobi9-adf"
-		},
-		"AzDataLakeStorage_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'AzDataLakeStorage'"
-		},
-		"DESE_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'DESE'"
-		},
-		"AzDataLakeStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://pocbacenstorage.dfs.core.windows.net"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/Estudo01')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Wait1",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": []
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/RA_CUSTOMER_TRX_ALL')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -89,15 +57,13 @@
 						"inputs": [
 							{
 								"referenceName": "SourceDataset_7hi",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Parquet1",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
@@ -134,9 +100,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzDataLakeStorage')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Parquet1')]",
@@ -159,9 +123,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzDataLakeStorage')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SourceDataset_7hi')]",
@@ -174,56 +136,7 @@
 				},
 				"annotations": [],
 				"type": "OracleTable",
-				"schema": [],
-				"typeProperties": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/DESE')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzDataLakeStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('AzDataLakeStorage_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzDataLakeStorage_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DESE')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Oracle",
-				"typeProperties": {
-					"connectionString": "[parameters('DESE_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "integrationRuntimeIBM",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeIBM')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/integrationRuntimeIBM')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
+				"schema": []
 			},
 			"dependsOn": []
 		}

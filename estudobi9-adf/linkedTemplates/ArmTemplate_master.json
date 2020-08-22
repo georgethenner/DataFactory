@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzDataLakeStorage'"
 		},
+		"DESE_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'DESE'"
+		},
 		"AzDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://pocbacenstorage.dfs.core.windows.net"
@@ -44,6 +48,9 @@
 					},
 					"AzDataLakeStorage_accountKey": {
 						"value": "[parameters('AzDataLakeStorage_accountKey')]"
+					},
+					"DESE_connectionString": {
+						"value": "[parameters('DESE_connectionString')]"
 					},
 					"AzDataLakeStorage_properties_typeProperties_url": {
 						"value": "[parameters('AzDataLakeStorage_properties_typeProperties_url')]"
