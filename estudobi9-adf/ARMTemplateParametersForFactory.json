@@ -4,6 +4,12 @@
 	"parameters": {
 		"factoryName": {
 			"value": "estudobi9-adf"
+		},
+		"AzDataLakeStorage_accountKey": {
+			"value": ""
+		},
+		"AzDataLakeStorage_properties_typeProperties_url": {
+			"value": "https://pocbacenstorage.dfs.core.windows.net"
 		}
 	}
 }
