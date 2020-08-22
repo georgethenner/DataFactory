@@ -1,0 +1,6 @@
+{
+	"name": "integrationRuntimeIBM",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
