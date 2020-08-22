@@ -40,7 +40,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_9he",
+						"referenceName": "OracleEBS",
 						"type": "DatasetReference"
 					}
 				],

@@ -1,9 +1,12 @@
 {
-	"name": "SourceDataset_9he",
+	"name": "OracleEBS",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "DESE",
 			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "EBS"
 		},
 		"annotations": [],
 		"type": "OracleTable",
