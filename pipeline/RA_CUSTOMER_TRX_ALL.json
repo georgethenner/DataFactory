@@ -26,7 +26,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "select * from APPS.RA_CUSTOMER_TRX_ALL \nwhere last_update_date>= to_date('2020-08-19 16:28:18', 'YYYY-MM-DD HH24:MI:SS')\nand last_update_date<= to_date('2020-08-21 16:28:18', 'YYYY-MM-DD HH24:MI:SS') ;",
+						"oracleReaderQuery": "select * from APPS.RA_CUSTOMER_TRX_ALL \nwhere last_update_date>= to_date('2020-08-15 16:28:18', 'YYYY-MM-DD HH24:MI:SS')\nand last_update_date<= to_date('2020-08-19 16:28:18', 'YYYY-MM-DD HH24:MI:SS') ;",
 						"partitionOption": "None"
 					},
 					"sink": {
@@ -1821,7 +1821,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "RA_CUSTOMER_TRX_ALL_Parquet",
+						"referenceName": "landingfile",
 						"type": "DatasetReference"
 					}
 				]
