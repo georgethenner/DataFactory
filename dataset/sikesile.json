@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "RA_CUSTOMER_TRX_ALL.parquet",
 				"folderPath": "RAW/RA_CUSTOMER_TRX_ALL",
 				"fileSystem": "staging"
 			},
