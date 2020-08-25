@@ -1826,40 +1826,10 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedTextCSV_APPS_ORIGEM",
+						"referenceName": "DelimitedTextCSV_APPS",
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "MageFiles",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [
-					{
-						"activity": "Copy_7hi",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "MageFiles",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					}
-				}
 			}
 		],
 		"annotations": []
