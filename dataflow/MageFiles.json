@@ -16,7 +16,7 @@
 						"referenceName": "DelimitedTextCSV_APPS",
 						"type": "DatasetReference"
 					},
-					"name": "source2"
+					"name": "rawfile"
 				}
 			],
 			"sinks": [
@@ -33,7 +33,7 @@
 					"name": "Union1"
 				}
 			],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> ORIGEM\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> source2\nORIGEM, source2 union(byName: true)~> Union1\nUnion1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> ORIGEM\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> rawfile\nORIGEM, rawfile union(byName: true)~> Union1\nUnion1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 		}
 	}
 }

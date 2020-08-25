@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "APPS.RA_CUSTOMER_TRX_ALL.RAW",
-				"folderPath": "ERP/APPS",
+				"fileName": "APPS.RA_CUSTOMER_TRX_ALL",
+				"folderPath": "RAW/RA_CUSTOMER_TRX_ALL",
 				"fileSystem": "staging"
 			},
 			"columnDelimiter": "|",
