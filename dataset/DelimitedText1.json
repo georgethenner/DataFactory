@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "teste",
 				"folderPath": "ERP/APPS",
 				"fileSystem": "staging"
 			},
