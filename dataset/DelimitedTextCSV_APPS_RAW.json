@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedTextCSV_APPS",
+	"name": "DelimitedTextCSV_APPS_RAW",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzDataLakeStorage",

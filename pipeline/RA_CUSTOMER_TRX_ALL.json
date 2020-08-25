@@ -1826,7 +1826,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedTextCSV_APPS",
+						"referenceName": "DelimitedTextCSV_APPS_RAW",
 						"type": "DatasetReference"
 					}
 				]
