@@ -30,13 +30,1793 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "ParquetSink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false,
-					"validateDataConsistency": false
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CUSTOMER_TRX_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CUSTOMER_TRX_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATED_BY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LAST_UPDATED_BY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATION_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATION_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_LOGIN",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_LOGIN",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TRX_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRX_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUST_TRX_TYPE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CUST_TRX_TYPE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TRX_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TRX_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "SET_OF_BOOKS_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SET_OF_BOOKS_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BILL_TO_CONTACT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BILL_TO_CONTACT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BATCH_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BATCH_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BATCH_SOURCE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BATCH_SOURCE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "REASON_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REASON_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SOLD_TO_CUSTOMER_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SOLD_TO_CUSTOMER_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SOLD_TO_CONTACT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SOLD_TO_CONTACT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SOLD_TO_SITE_USE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SOLD_TO_SITE_USE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BILL_TO_CUSTOMER_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BILL_TO_CUSTOMER_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BILL_TO_SITE_USE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BILL_TO_SITE_USE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIP_TO_CUSTOMER_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SHIP_TO_CUSTOMER_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIP_TO_CONTACT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SHIP_TO_CONTACT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIP_TO_SITE_USE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SHIP_TO_SITE_USE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIPMENT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SHIPMENT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "REMIT_TO_ADDRESS_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "REMIT_TO_ADDRESS_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TERM_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TERM_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TERM_DUE_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TERM_DUE_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PREVIOUS_CUSTOMER_TRX_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PREVIOUS_CUSTOMER_TRX_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARY_SALESREP_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PRIMARY_SALESREP_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PRINTING_ORIGINAL_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PRINTING_ORIGINAL_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PRINTING_LAST_PRINTED",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PRINTING_LAST_PRINTED",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PRINTING_OPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRINTING_OPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRINTING_COUNT",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PRINTING_COUNT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PRINTING_PENDING",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRINTING_PENDING",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PURCHASE_ORDER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PURCHASE_ORDER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PURCHASE_ORDER_REVISION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PURCHASE_ORDER_REVISION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PURCHASE_ORDER_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PURCHASE_ORDER_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_REFERENCE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMER_REFERENCE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_REFERENCE_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CUSTOMER_REFERENCE_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "COMMENTS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMMENTS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERNAL_NOTES",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERNAL_NOTES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXCHANGE_RATE_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EXCHANGE_RATE_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXCHANGE_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "EXCHANGE_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "EXCHANGE_RATE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "EXCHANGE_RATE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "TERRITORY_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TERRITORY_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_CURRENCY_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICE_CURRENCY_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INITIAL_CUSTOMER_TRX_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "INITIAL_CUSTOMER_TRX_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "AGREEMENT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AGREEMENT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "END_DATE_COMMITMENT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "END_DATE_COMMITMENT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "START_DATE_COMMITMENT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "START_DATE_COMMITMENT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_PRINTED_SEQUENCE_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LAST_PRINTED_SEQUENCE_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE_CATEGORY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE_CATEGORY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE7",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE7",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE8",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE8",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE9",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE9",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORIG_SYSTEM_BATCH_NAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORIG_SYSTEM_BATCH_NAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "POST_REQUEST_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "POST_REQUEST_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "REQUEST_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "REQUEST_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROGRAM_APPLICATION_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROGRAM_APPLICATION_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROGRAM_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROGRAM_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROGRAM_UPDATE_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROGRAM_UPDATE_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FINANCE_CHARGES",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FINANCE_CHARGES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMPLETE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMPLETE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "POSTING_CONTROL_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "POSTING_CONTROL_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BILL_TO_ADDRESS_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BILL_TO_ADDRESS_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RA_POST_LOOP_NUMBER",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "RA_POST_LOOP_NUMBER",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIP_TO_ADDRESS_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SHIP_TO_ADDRESS_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREDIT_METHOD_FOR_RULES",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREDIT_METHOD_FOR_RULES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREDIT_METHOD_FOR_INSTALLMENTS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREDIT_METHOD_FOR_INSTALLMENTS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIPT_METHOD_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "RECEIPT_METHOD_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE11",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE11",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE13",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE13",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE14",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE14",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ATTRIBUTE15",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ATTRIBUTE15",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RELATED_CUSTOMER_TRX_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "RELATED_CUSTOMER_TRX_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICING_RULE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "INVOICING_RULE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIP_VIA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SHIP_VIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIP_DATE_ACTUAL",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SHIP_DATE_ACTUAL",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "WAYBILL_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WAYBILL_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FOB_POINT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FOB_POINT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_BANK_ACCOUNT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CUSTOMER_BANK_ACCOUNT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE7",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE7",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE8",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE8",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_CONTEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_CONTEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEFAULT_USSGL_TRX_CODE_CONTEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEFAULT_USSGL_TRX_CODE_CONTEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE11",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE11",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE13",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE13",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE14",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE14",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE15",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE15",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE9",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERFACE_HEADER_ATTRIBUTE9",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEFAULT_USSGL_TRANSACTION_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEFAULT_USSGL_TRANSACTION_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RECURRED_FROM_TRX_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RECURRED_FROM_TRX_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STATUS_TRX",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATUS_TRX",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DOC_SEQUENCE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DOC_SEQUENCE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DOC_SEQUENCE_VALUE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DOC_SEQUENCE_VALUE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYING_CUSTOMER_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PAYING_CUSTOMER_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYING_SITE_USE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PAYING_SITE_USE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RELATED_BATCH_SOURCE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "RELATED_BATCH_SOURCE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DEFAULT_TAX_EXEMPT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEFAULT_TAX_EXEMPT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_FROM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_FROM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORG_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ORG_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "WH_UPDATE_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "WH_UPDATE_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE7",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE7",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE8",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE8",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE9",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE9",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE11",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE11",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE13",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE13",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE14",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE14",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE15",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE15",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE16",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE16",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE17",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE17",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE18",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE18",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE19",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE19",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE20",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE20",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE21",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE21",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE22",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE22",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE23",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE23",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE25",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE25",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE26",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE26",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE27",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE27",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE28",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE28",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE29",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE29",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE30",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE30",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GLOBAL_ATTRIBUTE_CATEGORY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GLOBAL_ATTRIBUTE_CATEGORY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EDI_PROCESSED_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EDI_PROCESSED_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EDI_PROCESSED_STATUS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EDI_PROCESSED_STATUS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MRC_EXCHANGE_RATE_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MRC_EXCHANGE_RATE_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MRC_EXCHANGE_DATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MRC_EXCHANGE_DATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MRC_EXCHANGE_RATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MRC_EXCHANGE_RATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENT_SERVER_ORDER_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENT_SERVER_ORDER_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "APPROVAL_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "APPROVAL_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESS_VERIFICATION_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESS_VERIFICATION_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OLD_TRX_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OLD_TRX_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BR_AMOUNT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "BR_AMOUNT",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "BR_UNPAID_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BR_UNPAID_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BR_ON_HOLD_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BR_ON_HOLD_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DRAWEE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DRAWEE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DRAWEE_CONTACT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DRAWEE_CONTACT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DRAWEE_SITE_USE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DRAWEE_SITE_USE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "REMITTANCE_BANK_ACCOUNT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "REMITTANCE_BANK_ACCOUNT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "OVERRIDE_REMIT_ACCOUNT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OVERRIDE_REMIT_ACCOUNT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DRAWEE_BANK_ACCOUNT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DRAWEE_BANK_ACCOUNT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SPECIAL_INSTRUCTIONS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SPECIAL_INSTRUCTIONS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "REMITTANCE_BATCH_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "REMITTANCE_BATCH_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PREPAYMENT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PREPAYMENT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CT_REFERENCE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CT_REFERENCE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_ID",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CONTRACT_ID",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "BILL_TEMPLATE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BILL_TEMPLATE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "REVERSED_CASH_RECEIPT_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "REVERSED_CASH_RECEIPT_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_ERROR_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CC_ERROR_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_ERROR_TEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CC_ERROR_TEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_ERROR_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CC_ERROR_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MANDATE_LAST_TRX_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MANDATE_LAST_TRX_FLAG",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -46,10 +1826,33 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Parquet1",
+						"referenceName": "DelimitedTextCSV_APPS",
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "MageFiles",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "MageFiles",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					}
+				}
 			}
 		],
 		"annotations": []

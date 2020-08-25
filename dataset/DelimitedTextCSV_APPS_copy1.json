@@ -1,20 +1,23 @@
 {
-	"name": "Parquet1",
+	"name": "DelimitedTextCSV_APPS_copy1",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzDataLakeStorage",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "Parquet",
+		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "APPS.RA_CUSTOMER_TRX_ALL",
+				"fileName": "APPS.RA_CUSTOMER_TRX_ALL.RAW",
 				"folderPath": "ERP/APPS",
 				"fileSystem": "staging"
 			},
-			"compressionCodec": "snappy"
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
 		},
 		"schema": []
 	}
