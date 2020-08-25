@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedTextCSV_APPS_copy1",
+	"name": "DelimitedTextCSV_APPS_ORIGEM",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzDataLakeStorage",
@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "APPS.RA_CUSTOMER_TRX_ALL.RAW",
+				"fileName": "APPS.RA_CUSTOMER_TRX_ALL.ORIGEM",
 				"folderPath": "ERP/APPS",
 				"fileSystem": "staging"
 			},

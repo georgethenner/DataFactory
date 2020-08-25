@@ -1826,7 +1826,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedTextCSV_APPS",
+						"referenceName": "DelimitedTextCSV_APPS_ORIGEM",
 						"type": "DatasetReference"
 					}
 				]
@@ -1834,7 +1834,14 @@
 			{
 				"name": "MageFiles",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Copy_7hi",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
