@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "DelimitedTextCSV_APPS_ORIGEM",
+						"referenceName": "DelimitedTextCSV_APPS_RAW",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
