@@ -30,14 +30,9 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "ParquetSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false,
@@ -1826,7 +1821,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedTextCSV_APPS_RAW",
+						"referenceName": "RA_CUSTOMER_TRX_ALL_Parquet",
 						"type": "DatasetReference"
 					}
 				]

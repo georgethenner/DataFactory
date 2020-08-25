@@ -1,0 +1,21 @@
+{
+	"name": "RA_CUSTOMER_TRX_ALL_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "RA_CUSTOMER_TRX_ALL.parquet",
+				"folderPath": "RAW/RA_CUSTOMER_TRX_ALL",
+				"fileSystem": "staging"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
