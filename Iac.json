@@ -1,0 +1,114 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sasToken": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Shared access signature token"
+            }
+        },
+        "appName": {
+            "type": "string"
+        },
+        "environment": {
+            "type": "string",
+            "metadata": {
+                "description": "Target environment"
+            }
+        }
+    },
+    "functions": [],
+    "variables": {
+        "templatesLocation": "https://ehqtemplates.blob.core.windows.net/templates-v2/",
+        "entityCode": "bra",
+        "region": "brs1"
+    },
+  "resources": [
+    //create storageaccount
+    {
+      "apiVersion": "2017-05-10",
+      "name": "StorageAccount",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(uri(variables('templatesLocation'), 'storage.json'), parameters('sasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "entityCode": {
+            "value": "[variables('entityCode')]"
+          },
+          "appName": {
+            "value": "[parameters('appName')]"
+          },
+          "environment": {
+            "value": "[parameters('environment')]"
+          }
+        }
+      }
+    },
+    //create fileshare
+    {
+      "apiVersion": "2017-05-10",
+      "name": "fileshare",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(uri(variables('templatesLocation'), 'storageFileShare.json'), parameters('sasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "entityCode": {
+            "value": "[variables('entityCode')]"
+          },
+          "appName": {
+            "value": "[parameters('appName')]"
+          },
+          "environment": {
+            "value": "[parameters('environment')]"
+          },
+          "fileshareName": {
+            "value": "filestransunion"
+          },
+          "shareQuota": {
+            "value": 100
+          }
+        }
+      },
+      "dependsOn": [ "StorageAccount" ]
+    },
+    //datafactory
+    {
+      "apiVersion": "2017-05-10",
+      "name": "datafactory",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(uri(variables('templatesLocation'), 'dataFactory.json'), parameters('sasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "entityCode": {
+            "value": "[variables('entityCode')]"
+          },
+          "appName": {
+            "value": "[parameters('appName')]"
+          },
+          "environment": {
+            "value": "[parameters('environment')]"
+          },
+          "region": {
+            "value": "[variables('region')]"
+          }
+        }
+      }
+    }
+  ],
+    "outputs": {
+
+    }
+}
