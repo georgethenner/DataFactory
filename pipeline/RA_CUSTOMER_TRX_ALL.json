@@ -5,7 +5,14 @@
 			{
 				"name": "Copy_7hi",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -26,7 +33,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "select * from APPS.RA_CUSTOMER_TRX_ALL \nwhere last_update_date>= to_date('2020-08-15 16:28:18', 'YYYY-MM-DD HH24:MI:SS')\nand last_update_date<= to_date('2020-08-19 16:28:18', 'YYYY-MM-DD HH24:MI:SS') ;",
+						"oracleReaderQuery": {
+							"value": "\"select * from APPS.RA_CUSTOMER_TRX_ALL \nwhere last_update_date>= to_date('2020-08-15 16:28:18', 'YYYY-MM-DD HH24:MI:SS')\nand last_update_date<= to_date('{variables('vDtInicio')}', 'YYYY-MM-DD HH24:MI:SS') ;\"",
+							"type": "Expression"
+						},
 						"partitionOption": "None"
 					},
 					"sink": {
@@ -1825,8 +1835,31 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "vDtInicio",
+					"value": {
+						"value": "@addseconds(adddays(pipeline().parameters.DataInicio,1),-1)",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"parameters": {
+			"DataInicio": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"vDtInicio": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
