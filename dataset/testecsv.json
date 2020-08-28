@@ -1,0 +1,32 @@
+{
+	"name": "testecsv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "outputblob",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"paradata": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().paradata",
+					"type": "Expression"
+				},
+				"folderPath": "EBS/hz_cust_site_uses_all/Raw-zone/2020-05",
+				"container": "staging"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
