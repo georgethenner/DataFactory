@@ -7,7 +7,8 @@
 		},
 		"parameters": {
 			"paradata": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "2020-05-10"
 			}
 		},
 		"annotations": [],
@@ -19,7 +20,10 @@
 					"value": "@dataset().paradata",
 					"type": "Expression"
 				},
-				"folderPath": "EBS/hz_cust_site_uses_all/Raw-zone/2020-05",
+				"folderPath": {
+					"value": "@concat('EBS/hz_cust_site_uses_all/Raw-zone/2020-05', substring(dataset().paradata, 0,7))",
+					"type": "Expression"
+				},
 				"container": "staging"
 			},
 			"columnDelimiter": ",",
