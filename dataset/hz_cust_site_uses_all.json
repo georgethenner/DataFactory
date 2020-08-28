@@ -5,6 +5,14 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"outputDirectoryPath": {
+				"type": "string"
+			},
+			"outputFileName": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "PocBacen"
 		},
@@ -13,8 +21,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "hz_cust_site_uses_all",
-				"folderPath": "EBS/hz_cust_site_uses_all/Raw-zone/2020-05/2020-05-06",
+				"fileName": {
+					"value": "@dataset().outputFileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('EBS/hz_cust_site_uses_all/Raw-zone/',substring(dataset().outputDirectoryPath,0,7))",
+					"type": "Expression"
+				},
 				"fileSystem": "staging"
 			},
 			"columnDelimiter": ",",

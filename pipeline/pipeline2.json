@@ -1,0 +1,89 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "hz_cust_site_uses_all",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "."
+					},
+					{
+						"name": "Destination",
+						"value": "staging/EBS/hz_cust_site_uses_all/Raw-zone/2020-05/2020-05-06/hz_cust_site_uses_all"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "select \nhcsua.cust_acct_site_id\n,hcsua.org_id\nFROM apps.hz_cust_site_uses_all    hcsua\nwhere 1 =1 \nand hcsua.status                          = 'A' \nand hcsua.site_use_code                   = 'BACEN'\nand trunc(hcsua.last_update_date) = '@pipeline().parameters.Data'",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "OracleEBS",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "hz_cust_site_uses_all",
+						"type": "DatasetReference",
+						"parameters": {
+							"outputDirectoryPath": {
+								"value": "@pipeline().parameters.Data",
+								"type": "Expression"
+							},
+							"outputFileName": {
+								"value": "@pipeline().parameters.Data",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"Data": {
+				"type": "string",
+				"defaultValue": "2017-12-18"
+			}
+		},
+		"annotations": []
+	}
+}
