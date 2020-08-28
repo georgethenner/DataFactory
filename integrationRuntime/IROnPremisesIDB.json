@@ -1,0 +1,6 @@
+{
+	"name": "IROnPremisesIDB",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
