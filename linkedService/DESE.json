@@ -6,10 +6,10 @@
 		"type": "Oracle",
 		"typeProperties": {
 			"connectionString": "host=su-br-des-db07.lanet.accorservices.net;port=1521;sid=DESE;user id=gtdsantos",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJlYjFiYWZjOS01ODE4LTQxNjYtYTExYy0xNGE0NWI3ZTc3ZGYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3MjZiNWVmYi03ZjcwLTRjZjUtODgzMC02YjYwZGE1NWY0Y2YiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
-			"referenceName": "integrationRuntimeIBM",
+			"referenceName": "IROnPremisesIDB",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
